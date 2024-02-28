@@ -6,14 +6,19 @@ import { Form } from "./components/form";
 
 export function App() {
   const [show, setShow] = useState(false);
-  const [show, setShow] = useState(false);
+  const [arrayList, setArrayList] = useState([]);
 
-  
+
 
   return (
     <div className="grid grid-cols-person grid-rows-person w-screen h-screen relative">
-      <Form show={show} setShow={setShow}/>
-      <Aside  setShow={setShow}/>
+      <Form
+        show={show}
+        setShow={setShow}
+        setArrayList={setArrayList}
+        arrayList={arrayList}
+      />
+      <Aside setShow={setShow} />
       <Amount />
       <div className="overflow-scroll">
         <h3 className="text-lg ml-3 font-semibold">Todas as notas</h3>
