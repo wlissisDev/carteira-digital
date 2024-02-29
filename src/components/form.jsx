@@ -9,15 +9,17 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
     const [category, setCategory] = useState("transporte");
     const [type, setType] = useState("despesa");
 
+
     function handleSubmit(event) {
         event.preventDefault();
 
-        setArrayList([{ name, value, date, category, type }, ...arrayList]);
-        console.log(arrayList);
+        localStorage.setItem("accountList", JSON.stringify([{ name, value, category, type, date }, ...arrayList]));
+        setArrayList(JSON.parse(localStorage.getItem("accountList")));
+
+
         setName("");
         setValue("");
         setDate("");
-
     }
 
     return (
@@ -102,7 +104,6 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
                     </select>
 
                 </div>
-
 
 
                 <button
