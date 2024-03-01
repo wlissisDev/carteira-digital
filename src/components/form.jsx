@@ -20,6 +20,8 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
         setName("");
         setValue("");
         setDate("");
+
+        alert("Item criado com sucesso!")
     }
 
     return (
