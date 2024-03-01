@@ -5,6 +5,7 @@ import { Aside } from "./components/aside";
 import { Form } from "./components/form";
 
 
+
 export function App() {
   const [show, setShow] = useState(false);
   const [arryDespesa, setArrayDespesa] = useState([]);
@@ -20,9 +21,6 @@ export function App() {
   });
 
   useEffect(() => {
-    if(arrayList.length  === 0 ) {
-      return;
-    }
     setArrayDespesa(arrayList.filter(item => item.type === "despesa"));
     setArrayReceita(arrayList.filter(item => item.type === "receita"));
   }, [arrayList])
@@ -36,43 +34,47 @@ export function App() {
         arrayList={arrayList}
         setArrayList={setArrayList}
       />
-      <Aside 
-      setArrayDespesa={setArrayDespesa}
-      setArrayReceita={setArrayReceita}
-      setShow={setShow} 
-      setTitle={setTitle}
+      <Aside
+        setArrayDespesa={setArrayDespesa}
+        setArrayReceita={setArrayReceita}
+        setShow={setShow}
+        setTitle={setTitle}
       />
-      <Amount/>
+      <Amount />
       <div className="overflow-scroll">
         <h3 className="text-lg ml-3 font-semibold capitalize">{title}</h3>
         <div className="md:flex gap-3 p-3">
           <ul className="flex-1">
             {
-              arryReceita?.map((item, index) => (
-                <Account key={index}
-                  name={item.name}
-                  category={item.category}
-                  date={item.date}
-                  value={item.value}
-                  type={item.type}
-                  setArrayList={setArrayList}
-                />
-              ))
+              arryReceita?.map((item, index) => {
+                return (
+                  <Account key={index}
+                    name={item.name}
+                    category={item.category}
+                    date={item.date}
+                    value={item.value}
+                    type={item.type}
+                    setArrayList={setArrayList}
+                  />
+                )
+              })
             }
           </ul>
 
           <ul className="flex-1">
             {
-              arryDespesa?.map((item, index) => (
-                <Account key={index}
-                  name={item.name}
-                  category={item.category}
-                  date={item.date}
-                  value={item.value}
-                  type={item.type}
-                  setArrayList={setArrayList}
-                />
-              ))
+              arryDespesa?.map((item, index) => {
+                return (
+                  <Account key={index}
+                    name={item.name}
+                    category={item.category}
+                    date={item.date}
+                    value={item.value}
+                    type={item.type}
+                    setArrayList={setArrayList}
+                  />
+                )
+              })
             }
 
           </ul>

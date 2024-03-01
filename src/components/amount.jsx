@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 
+
 export function Amount() {
     const [receita, setReceita] = useState(0);
     const [despesa, setDespesa] = useState(0);

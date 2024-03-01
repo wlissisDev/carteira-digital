@@ -20,8 +20,11 @@ export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
     }
 
     function handleGetAllAccounts() {
-        const data = JSON.parse(localStorage.getItem("accountList"));
         setTitle("Todos")
+        if(!localStorage.getItem("accountList")){
+            return;
+        }
+        const data = JSON.parse(localStorage.getItem("accountList"));
         setArrayDespesa(data.filter(item => item.type === "despesa"));
         setArrayReceita(data.filter(item => item.type === "receita"));
     }
@@ -64,14 +67,7 @@ export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
                     <RiMentalHealthFill />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Saúde</span>
                 </button>
-                <button
-                    className="flex items-center gap-3 hover:text-orange-500 wmin "
-                    onClick={() => handleSetCategory("outro")}
-
-                >
-                    <MdMoreVert />
-                    <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Outros</span>
-                </button>
+               
             </div>
             <button
                 onClick={() => setShow(true)}
