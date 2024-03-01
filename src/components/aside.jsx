@@ -24,8 +24,8 @@ export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
     }
 
     return (
-        <div className="row-start-1 row-end-3 h-screen w-full p-8  flex flex-col justify-between border-r" >
-            <div className="flex flex-col gap-6">
+        <div className="md:row-start-1 md:row-end-3 md:h-screen md:w-full p-8  flex flex-col md:justify-between items-center  md:border" >
+            <div className="flex items-center md:items-start md:flex-col flex-wrap md:gap-6 gap-3">
                 <button
                     className="flex items-center gap-3 hover:text-orange-500 w-min "
                     onClick={handleGetAllAccounts}
@@ -72,7 +72,7 @@ export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
             </div>
             <button
                 onClick={() => setShow(true)}
-                className="text-white bg-slate-900 font-semibold text-lg px-6 py-3 rounded-md hover:bg-gray-800">Adicionar </button>
+                className="text-white bg-slate-900 w-1/2 md:w-full mt-5 md:mt-0 font-semibold text-lg px-6 py-3 rounded-md hover:bg-gray-800">Adicionar </button>
         </div>
     )
 }

@@ -26,7 +26,7 @@ export function App() {
 
 
   return (
-    <div className="grid grid-cols-person grid-rows-person w-screen h-screen relative">
+    <div className=" md:grid md:grid-cols-person md:grid-rows-person  md:w-screen md:h-screen relative">
       <Form
         show={show}
         setShow={setShow}
@@ -42,7 +42,7 @@ export function App() {
       <Amount/>
       <div className="overflow-scroll">
         <h3 className="text-lg ml-3 font-semibold capitalize">{title}</h3>
-        <div className="flex gap-3 p-3">
+        <div className="md:flex gap-3 p-3">
           <ul className="flex-1">
             {
               arryReceita?.map((item, index) => (
