@@ -16,7 +16,7 @@ export function App() {
     if (localStorage.getItem("accountList")) {
       return JSON.parse(localStorage.getItem("accountList"));
     }
-    return [];
+    return;
   });
 
   useEffect(() => {
