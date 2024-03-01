@@ -12,11 +12,16 @@ export function App() {
 
   const [title, setTitle] = useState("Todos");
 
-  const [arrayList, setArrayList] = useState([]);
+  const [arrayList, setArrayList] = useState(() => {
+    if (localStorage.getItem("accountList")) {
+      return JSON.parse(localStorage.getItem("accountList"));
+    }
+    return [];
+  });
 
   useEffect(() => {
-    if(arrayList.length<1){
-      console.log("entrou aqui")
+    if(arrayList.length  === 0 ) {
+      console.log("entrei")
       return;
     }
     setArrayDespesa(arrayList.filter(item => item.type === "despesa"));
