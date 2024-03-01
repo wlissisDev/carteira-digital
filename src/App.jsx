@@ -20,6 +20,9 @@ export function App() {
   });
 
   useEffect(() => {
+    if(arrayList === null) {
+      return;
+    }
     setArrayDespesa(arrayList.filter(item => item.type === "despesa"));
     setArrayReceita(arrayList.filter(item => item.type === "receita"));
   }, [arrayList])
