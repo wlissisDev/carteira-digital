@@ -12,12 +12,7 @@ export function App() {
 
   const [title, setTitle] = useState("Todos");
 
-  const [arrayList, setArrayList] = useState(() => {
-    if (localStorage.getItem("accountList")) {
-      return JSON.parse(localStorage.getItem("accountList"));
-    }
-    return;
-  });
+  const [arrayList, setArrayList] = useState([]);
 
   useEffect(() => {
     if(arrayList === null) {
