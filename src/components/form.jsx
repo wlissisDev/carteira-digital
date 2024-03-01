@@ -23,7 +23,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
     }
 
     return (
-        <div className={`bg-[#0005]  absolute md:w-full h-screen w-screen md:h-full grid place-content-center md:py-auto py-2 ${show ? "" : "hidden"}`}>
+        <div className={`bg-[#0005]  absolute md:w-full h-[100vh] w-screen md:h-full grid place-content-center md:py-auto py-2 ${show ? "" : "hidden"}`}>
             <form
                 className="bg-white p-4 rounded-md md:h-auto h-screen relative"
                 onSubmit={handleSubmit}
