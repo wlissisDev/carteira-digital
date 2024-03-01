@@ -15,7 +15,8 @@ export function App() {
   const [arrayList, setArrayList] = useState([]);
 
   useEffect(() => {
-    if(arrayList === null) {
+    if(arrayList.length<1){
+      console.log("entrou aqui")
       return;
     }
     setArrayDespesa(arrayList.filter(item => item.type === "despesa"));
