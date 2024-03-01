@@ -23,15 +23,15 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
     }
 
     return (
-        <div className={`bg-[#0005]  absolute w-full h-full grid place-content-center ${show ? "" : "hidden"}`}>
+        <div className={`bg-[#0005]  absolute md:w-full h-screen w-screen md:h-full grid place-content-center md:py-auto py-2 ${show ? "" : "hidden"}`}>
             <form
-                className="bg-white p-4 rounded-md relative "
+                className="bg-white p-4 rounded-md md:h-auto h-screen relative"
                 onSubmit={handleSubmit}
             >
                 <button
                     onClick={() => setShow(false)}
                     type="button"
-                    className="absolute right-2 top-2"
+                    className="absolute right-2 top-2 "
                 >
                     <MdClose size={25} />
                 </button>
@@ -60,7 +60,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
                 <div className="flex flex-col">
                     <label className="font-semibold mt-3 text-gray-500">Nome</label>
                     <input
-                        className="border outline-none text-lg py-2 px-3 w-80 rounded-sm"
+                        className="border outline-none text-lg py-2 px-3 w-96 rounded-sm"
                         placeholder="Digite um nome para sua conta"
                         type="text"
                         required
@@ -72,7 +72,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
                     <label className="font-semibold mt-3 text-gray-500">Valor</label>
                     <input
                         placeholder="Digite o valor da sua conta"
-                        className="border outline-none  text-lg py-2 px-3 w-80 rounded-sm"
+                        className="border outline-none  text-lg py-2 px-3 w-96 rounded-sm"
                         type="number" min={0}
                         required
                         onChange={(e) => setValue(parseInt(e.target.value))}
@@ -82,7 +82,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
                 <div className="flex flex-col">
                     <label className="font-semibold mt-3 text-gray-500">Data</label>
                     <input
-                        className="border outline-none  text-lg py-2 px-3 w-80 rounded-sm"
+                        className="border outline-none  text-lg py-2 px-3 w-96 rounded-sm"
                         type="date"
                         required
                         onChange={(e) => setDate(e.target.value)}
@@ -93,7 +93,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
                 <div className="flex flex-col">
                     <label className="font-semibold mt-3 text-gray-500">Selecione a categoria</label>
                     <select
-                        className="border outline-none  text-lg py-2 px-3 w-80 rounded-sm"
+                        className="border outline-none  text-lg py-2 px-3 w-96 rounded-sm"
                         onChange={(e) => setCategory(e.target.value)}
                     >
                         <option value="transporte">Transporte</option>
