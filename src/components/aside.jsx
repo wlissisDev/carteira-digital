@@ -10,15 +10,18 @@ import { MdMoreVert } from "react-icons/md";
 export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
 
     function handleSetCategory(category) {
-        const data = JSON.parse(localStorage.getItem("accountList"));
         setTitle(category)
+        if(!localStorage.getItem("accountList")){
+            return;
+        }
+        const data = JSON.parse(localStorage.getItem("accountList"));
         setArrayDespesa(data.filter(item => item.category === category && item.type === "despesa"));
         setArrayReceita(data.filter(item => item.category === category && item.type === "receita"));
     }
 
     function handleGetAllAccounts() {
         const data = JSON.parse(localStorage.getItem("accountList"));
-        setTitle("Todas as contas")
+        setTitle("Todos")
         setArrayDespesa(data.filter(item => item.type === "despesa"));
         setArrayReceita(data.filter(item => item.type === "receita"));
     }

@@ -6,7 +6,7 @@ export function Form({ show, setShow, setArrayList, arrayList }) {
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [value, setValue] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("transporte");
     const [type, setType] = useState("despesa");
 
 
