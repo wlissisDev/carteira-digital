@@ -21,7 +21,6 @@ export function App() {
 
   useEffect(() => {
     if(arrayList.length  === 0 ) {
-      console.log("entrei")
       return;
     }
     setArrayDespesa(arrayList.filter(item => item.type === "despesa"));

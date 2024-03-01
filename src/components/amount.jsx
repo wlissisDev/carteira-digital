@@ -8,7 +8,6 @@ export function Amount() {
         let receitaTotal = 0;
         let despesaTotal = 0;
         if(!localStorage.getItem("accountList")){
-            console.log("O erro era aqui")
             return;
         }
         JSON.parse(localStorage.getItem("accountList"))
