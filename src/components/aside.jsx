@@ -7,34 +7,72 @@ import { MdMoreVert } from "react-icons/md";
 
 
 
-export function Aside({setShow}) {
+export function Aside({ setShow, setTitle, setArrayDespesa, setArrayReceita }) {
+
+    function handleSetCategory(category) {
+        const data = JSON.parse(localStorage.getItem("accountList"));
+        setTitle(category)
+        setArrayDespesa(data.filter(item => item.category === category && item.type === "despesa"));
+        setArrayReceita(data.filter(item => item.category === category && item.type === "receita"));
+    }
+
+    function handleGetAllAccounts() {
+        const data = JSON.parse(localStorage.getItem("accountList"));
+        setTitle("Todas as contas")
+        setArrayDespesa(data.filter(item => item.type === "despesa"));
+        setArrayReceita(data.filter(item => item.type === "receita"));
+    }
+
     return (
         <div className="row-start-1 row-end-3 h-screen w-full p-8  flex flex-col justify-between border-r" >
             <div className="flex flex-col gap-6">
-                <div className="flex items-center gap-3">
-                    <FaCar/>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 w-min "
+                    onClick={handleGetAllAccounts}
+                >
+                    <MdMoreVert />
+                    <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Todos</span>
+                </button>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 w-min "
+                    onClick={() => handleSetCategory("transporte")}
+                >
+                    <FaCar />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Tranporte</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <IoFastFood/>
+                </button>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 w-min "
+                    onClick={() => handleSetCategory("alimentacao")}
+                >
+                    <IoFastFood />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Alimentação</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <FaSkating/>
+                </button>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 w-min "
+                    onClick={() => handleSetCategory("lazer")}
+                >
+                    <FaSkating />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Lazer</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <RiMentalHealthFill/>
+                </button>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 w-min "
+                    onClick={() => handleSetCategory("saude")}
+                >
+                    <RiMentalHealthFill />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Saúde</span>
-                </div>
-                <div className="flex items-center gap-3">
-                    <MdMoreVert/>
+                </button>
+                <button
+                    className="flex items-center gap-3 hover:text-orange-500 wmin "
+                    onClick={() => handleSetCategory("outro")}
+
+                >
+                    <MdMoreVert />
                     <span className="text-lg font-semibold my-3 text-black cursor-pointer hover:text-orange-500">Outros</span>
-                </div>
+                </button>
             </div>
-            <button 
-            onClick={()=>setShow(true)}
-            className="text-white bg-slate-900 font-semibold text-lg px-6 py-3 rounded-md">Adicionar </button>
+            <button
+                onClick={() => setShow(true)}
+                className="text-white bg-slate-900 font-semibold text-lg px-6 py-3 rounded-md hover:bg-gray-800">Adicionar </button>
         </div>
     )
 }

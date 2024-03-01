@@ -7,14 +7,24 @@ import { Form } from "./components/form";
 
 export function App() {
   const [show, setShow] = useState(false);
+  const [arryDespesa, setArrayDespesa] = useState([]);
+  const [arryReceita, setArrayReceita] = useState([]);
+
+  const [title, setTitle] = useState("Todos");
+
   const [arrayList, setArrayList] = useState(() => {
     if (localStorage.getItem("accountList")) {
-        return JSON.parse(localStorage.getItem("accountList"));
+      return JSON.parse(localStorage.getItem("accountList"));
     }
     return [];
-});
+  });
 
- 
+  useEffect(() => {
+    setArrayDespesa(arrayList.filter(item => item.type === "despesa"));
+    setArrayReceita(arrayList.filter(item => item.type === "receita"));
+  }, [arrayList])
+
+
   return (
     <div className="grid grid-cols-person grid-rows-person w-screen h-screen relative">
       <Form
@@ -23,27 +33,45 @@ export function App() {
         arrayList={arrayList}
         setArrayList={setArrayList}
       />
-      <Aside setShow={setShow} />
-      <Amount />
+      <Aside 
+      setArrayDespesa={setArrayDespesa}
+      setArrayReceita={setArrayReceita}
+      setShow={setShow} 
+      setTitle={setTitle}
+      />
+      <Amount/>
       <div className="overflow-scroll">
-        <h3 className="text-lg ml-3 font-semibold">Todas as notas</h3>
+        <h3 className="text-lg ml-3 font-semibold capitalize">{title}</h3>
         <div className="flex gap-3 p-3">
           <ul className="flex-1">
             {
-              arrayList?.map((item, index)=>(
+              arryReceita?.map((item, index) => (
                 <Account key={index}
                   name={item.name}
                   category={item.category}
                   date={item.date}
                   value={item.value}
+                  type={item.type}
+                  setArrayList={setArrayList}
                 />
               ))
             }
           </ul>
 
           <ul className="flex-1">
-            <Account />
-            
+            {
+              arryDespesa?.map((item, index) => (
+                <Account key={index}
+                  name={item.name}
+                  category={item.category}
+                  date={item.date}
+                  value={item.value}
+                  type={item.type}
+                  setArrayList={setArrayList}
+                />
+              ))
+            }
+
           </ul>
         </div>
       </div>
